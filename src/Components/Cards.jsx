@@ -2,82 +2,66 @@ import React from "react";
 
 const Cards = () => {
   return (
-    <section className="text-gray-600 body-font lg:col-span-2">
-      <div className="container px-5 py-4 mx-auto">
-        <div className="flex flex-wrap -m-4">
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-60 rounded overflow-hidden">
+    <section className="text-gray-600 body-font col-span-2 lg:col-span-3">
+      <div className="container px-5 mx-auto">
+        <ul className="grid lg:gap-4 grid-cols-1 lg:grid-cols-4">
+          <li>
+            <a href="#" className="group block overflow-hidden rounded-lg">
               <img
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                src="https://dummyimage.com/420x260"
+                src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                alt=""
+                className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[400px]"
               />
+              <div className="relative bg-white py-2">
+                <h3 className="text-sm text-center text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                  Basic Tee
+                </h3>
+              </div>
             </a>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-60 rounded overflow-hidden">
+          </li>
+          <li>
+            <a href="#" className="group block overflow-hidden rounded-lg">
               <img
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                src="https://dummyimage.com/421x261"
+                src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                alt=""
+                className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[400px]"
               />
+              <div className="relative bg-white py-2">
+                <h3 className="text-sm text-center text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                  Basic Tee
+                </h3>
+              </div>
             </a>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-60 rounded overflow-hidden">
+          </li>
+          <li>
+            <a href="#" className="group block overflow-hidden rounded-lg">
               <img
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                src="https://dummyimage.com/422x262"
+                src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                alt=""
+                className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[400px]"
               />
+              <div className="relative bg-white py-2">
+                <h3 className="text-sm text-center text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                  Basic Tee
+                </h3>
+              </div>
             </a>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-60 rounded overflow-hidden">
+          </li>
+          <li>
+            <a href="#" className="group block overflow-hidden rounded-lg">
               <img
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                src="https://dummyimage.com/423x263"
+                src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                alt=""
+                className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[400px]"
               />
+              <div className="relative bg-white py-2">
+                <h3 className="text-sm text-center text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                  Basic Tee
+                </h3>
+              </div>
             </a>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-60 rounded overflow-hidden">
-              <img
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                src="https://dummyimage.com/424x264"
-              />
-            </a>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-60 rounded overflow-hidden">
-              <img
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                src="https://dummyimage.com/425x265"
-              />
-            </a>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-60 rounded overflow-hidden">
-              <img
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                src="https://dummyimage.com/427x267"
-              />
-            </a>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-60 rounded overflow-hidden">
-              <img
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                src="https://dummyimage.com/428x268"
-              />
-            </a>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </section>
   );
