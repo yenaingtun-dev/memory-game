@@ -1,6 +1,5 @@
 import Cards from "./Components/Cards";
-import CurrentScore from "./Components/CurrentScore";
-import HighestScore from "./Components/HighestScore";
+import Score from "./Components/Score";
 
 const App = () => {
   return (
@@ -9,8 +8,7 @@ const App = () => {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 content-start place-items-start">
         <Cards  />
         <div className="">
-          <CurrentScore />
-          <HighestScore />
+          <Score />
         </div>
       </div>
     </section>
