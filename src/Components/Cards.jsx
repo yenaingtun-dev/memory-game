@@ -16,8 +16,15 @@ const Cards = () => {
     },
   ];
 
+  const getPoint = (event) => {
+    // Get the X and Y coordinates of the click event
+    const x = event.clientX;
+    const y = event.clientY;
+    alert(`Click coordinates: X: ${x}, Y: ${y}`);
+  };
+
   const listItems = tees.map((tee) => (
-    <li>
+    <li onClick={getPoint}>
       <a href="#" className="group block overflow-hidden rounded-lg">
         <img
           src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
