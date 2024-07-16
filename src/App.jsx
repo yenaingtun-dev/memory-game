@@ -1,17 +1,16 @@
 import Cards from "./Components/Cards";
-import Score from "./Components/Score";
+import Header from "./Components/Header";
 
 const App = () => {
   return (
-    <section className="max-w-7xl p-4">
-      <h1 className="text-xl text-black p-5">Header</h1>
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 content-start place-items-start">
-        <Cards  />
-        <div className="">
-          <Score />
+    <>
+    <Header />
+      <section className="max-w-7xl p-4">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 content-start place-items-start">
+          <Cards />
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

@@ -76,7 +76,7 @@ const Cards = () => {
   ));
 
   return (
-    <section className="text-gray-600 body-font col-span-2 lg:col-span-3">
+    <section className="text-gray-600 body-font col-span-2 lg:col-span-4">
       <div className="container px-5 mx-auto">
         <ul className="grid lg:gap-4 grid-cols-1 lg:grid-cols-4">
           {listItems}
