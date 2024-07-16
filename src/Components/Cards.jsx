@@ -5,26 +5,36 @@ const Cards = () => {
     {
       id: 1,
       title: "Basic Tee",
+      clicked: false,
     },
     {
       id: 2,
       title: "Basic Tee",
+      clicked: false,
     },
     {
       id: 3,
       title: "Basic Tee",
+      clicked: false,
     },
   ];
 
-  const getPoint = (event) => {
-    // Get the X and Y coordinates of the click event
-    const x = event.clientX;
-    const y = event.clientY;
-    alert(`Click coordinates: X: ${x}, Y: ${y}`);
+  let point = 0;
+  const getPoint = (tees, tee) => {
+    if (tee.clicked !== true) {
+      point += 1;
+      tee.clicked = true;
+    } else {
+      point = 0;
+      tees.map((tee) => {
+        tee.clicked = false;
+      })
+      alert('restart');
+    }
   };
 
   const listItems = tees.map((tee) => (
-    <li onClick={getPoint}>
+    <li onClick={() => getPoint(tees, tee)}>
       <a href="#" className="group block overflow-hidden rounded-lg">
         <img
           src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
