@@ -17,6 +17,31 @@ const Cards = () => {
       title: "Basic Tee",
       clicked: false,
     },
+    {
+      id: 4,
+      title: "Basic Tee",
+      clicked: false,
+    },
+    {
+      id: 5,
+      title: "Basic Tee",
+      clicked: false,
+    },
+    {
+      id: 6,
+      title: "Basic Tee",
+      clicked: false,
+    },
+    {
+      id: 7,
+      title: "Basic Tee",
+      clicked: false,
+    },
+    {
+      id: 8,
+      title: "Basic Tee",
+      clicked: false,
+    },
   ];
 
   let point = 0;
