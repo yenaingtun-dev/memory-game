@@ -7,23 +7,30 @@ const Cards = () => {
   const [highestScore, setHighestScore] = useState(0);
   const [error, setError] = useState(null);
 
+  const shuffleArray = (array) => {
+    return array
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
+  };
+
   useEffect(() => {
-    fetch('https://hp-api.onrender.com/api/characters')
-      .then(response => {
-         if (!response.ok) {
-          throw new Error('Network response was not ok');
+    fetch("https://hp-api.onrender.com/api/characters")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then(data => {
-        const slicedData = data.slice(0, 12);
+      .then((data) => {
+        const slicedData = data.slice(0, 20);
         setPeople(slicedData);
       })
-      .catch(error => {
+      .catch((error) => {
         setError(error);
         setLoading(false);
       });
-  },[]);
+  }, []);
 
   const [people, setPeople] = useState([]);
 
@@ -31,15 +38,17 @@ const Cards = () => {
     if (person.clicked !== true) {
       person.clicked = true;
       setPoint((prevPoint) => prevPoint + 1);
+      setPeople(prevData => shuffleArray([...prevData]));
     } else {
       people.map((person) => {
         person.clicked = false;
       });
       if (point > highestScore) {
-        setHighestScore(point)
+        setHighestScore(point);
       }
       alert("restart");
       setPoint(0);
+      setPeople(prevData => shuffleArray([...prevData]));
     }
   };
 
