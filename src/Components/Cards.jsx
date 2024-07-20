@@ -25,6 +25,10 @@ const Cards = () => {
       .then((data) => {
         const slicedData = data.slice(0, 20);
         setPeople(slicedData);
+        const highestScoreLocal = localStorage.getItem('Highest Score');
+        if (highestScoreLocal) {
+          setHighestScore(highestScoreLocal)
+        }
       })
       .catch((error) => {
         setError(error);
@@ -45,6 +49,7 @@ const Cards = () => {
       });
       if (point > highestScore) {
         setHighestScore(point);
+        localStorage.setItem('Highest Score', point);
       }
       alert("restart");
       setPoint(0);
