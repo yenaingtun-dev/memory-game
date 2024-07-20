@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = ({point}) => {
+const Header = ({point, highestScore}) => {
   return (
     <header>
       <div className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -15,7 +15,7 @@ const Header = ({point}) => {
               Current Score - {point} {point > 0 ? 'points' : 'point'}
             </p>
             <p className="text-lg font-semibold text-gray-900">
-              Highest Score - 100points
+              Highest Score - {highestScore} {highestScore > 0 ? 'points' : 'point'}
             </p>
           </div>
         </div>

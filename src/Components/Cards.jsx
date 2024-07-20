@@ -4,6 +4,7 @@ import Header from "./Header";
 
 const Cards = () => {
   const [point, setPoint] = useState(0);
+  const [highestScore, setHighestScore] = useState(0);
   const [tees, setTee] = useState([
     {
       id: 1,
@@ -55,6 +56,9 @@ const Cards = () => {
       tees.map((tee) => {
         tee.clicked = false;
       });
+      if (point > highestScore) {
+        setHighestScore(point)
+      }
       alert("restart");
       setPoint(0);
     }
@@ -62,7 +66,7 @@ const Cards = () => {
 
   return (
     <>
-      <Header point={point} />
+      <Header point={point} highestScore={highestScore} />
       <section className="text-gray-600 body-font col-span-2 lg:col-span-4">
         <div className="container px-5 mx-auto">
           <ul className="grid lg:gap-4 grid-cols-1 lg:grid-cols-4">
