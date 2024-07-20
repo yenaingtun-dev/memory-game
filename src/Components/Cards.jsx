@@ -1,60 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Header from "./Header";
 
 const Cards = () => {
   const [point, setPoint] = useState(0);
   const [highestScore, setHighestScore] = useState(0);
-  const [tees, setTee] = useState([
-    {
-      id: 1,
-      title: "Basic Tee",
-      clicked: false,
-    },
-    {
-      id: 2,
-      title: "Basic Tee",
-      clicked: false,
-    },
-    {
-      id: 3,
-      title: "Basic Tee",
-      clicked: false,
-    },
-    {
-      id: 4,
-      title: "Basic Tee",
-      clicked: false,
-    },
-    {
-      id: 5,
-      title: "Basic Tee",
-      clicked: false,
-    },
-    {
-      id: 6,
-      title: "Basic Tee",
-      clicked: false,
-    },
-    {
-      id: 7,
-      title: "Basic Tee",
-      clicked: false,
-    },
-    {
-      id: 8,
-      title: "Basic Tee",
-      clicked: false,
-    },
-  ]);
+  const [error, setError] = useState(null);
 
-  const checkTee = (tees, tee) => {
-    if (tee.clicked !== true) {
-      tee.clicked = true;
+  useEffect(() => {
+    fetch('https://hp-api.onrender.com/api/characters')
+      .then(response => {
+         if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const slicedData = data.slice(0, 12);
+        setPeople(slicedData);
+      })
+      .catch(error => {
+        setError(error);
+        setLoading(false);
+      });
+  },[]);
+
+  const [people, setPeople] = useState([]);
+
+  const checkPerson = (people, person) => {
+    if (person.clicked !== true) {
+      person.clicked = true;
       setPoint((prevPoint) => prevPoint + 1);
     } else {
-      tees.map((tee) => {
-        tee.clicked = false;
+      people.map((person) => {
+        person.clicked = false;
       });
       if (point > highestScore) {
         setHighestScore(point)
@@ -70,9 +49,9 @@ const Cards = () => {
       <section className="text-gray-600 body-font col-span-2 lg:col-span-4">
         <div className="container px-5 mx-auto">
           <ul className="grid lg:gap-4 grid-cols-1 lg:grid-cols-4">
-            {tees.map((tee) => (
-              <li key={tee.id} onClick={() => checkTee(tees, tee)}>
-                <Card title={tee.title} />
+            {people.map((person) => (
+              <li key={person.id} onClick={() => checkPerson(people, person)}>
+                <Card person={person} />
               </li>
             ))}
           </ul>
