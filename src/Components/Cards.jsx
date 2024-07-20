@@ -6,6 +6,7 @@ const Cards = () => {
   const [point, setPoint] = useState(0);
   const [highestScore, setHighestScore] = useState(0);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const shuffleArray = (array) => {
     return array
@@ -29,6 +30,7 @@ const Cards = () => {
         if (highestScoreLocal) {
           setHighestScore(highestScoreLocal)
         }
+        setLoading(false);
       })
       .catch((error) => {
         setError(error);
@@ -56,6 +58,8 @@ const Cards = () => {
       setPeople(prevData => shuffleArray([...prevData]));
     }
   };
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <>
