@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const Card = ({person}) => {
+const Card = ({ person }) => {
   return (
     <>
-       <a className="group block overflow-hidden rounded-lg cursor-pointer">
+      <a className="group block overflow-hidden rounded-lg cursor-pointer">
         <img
           src={person.image}
           alt=""
@@ -15,8 +15,8 @@ const Card = ({person}) => {
           </h3>
         </div>
       </a>
-      </>
-  )
-}
+    </>
+  );
+};
 
-export default Card
+export default Card;

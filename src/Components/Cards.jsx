@@ -7,6 +7,7 @@ const Cards = () => {
   const [highestScore, setHighestScore] = useState(0);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  // const [isFlipped, setIsFlipped] = useState(false);
 
   const shuffleArray = (array) => {
     return array
@@ -42,6 +43,7 @@ const Cards = () => {
 
   const checkPerson = (people, person) => {
     if (person.clicked !== true) {
+      // setIsFlipped(true);
       person.clicked = true;
       setPoint((prevPoint) => prevPoint + 1);
       setPeople(prevData => shuffleArray([...prevData]));
@@ -69,7 +71,7 @@ const Cards = () => {
           <ul className="grid lg:gap-4 grid-cols-1 lg:grid-cols-4">
             {people.map((person) => (
               <li key={person.id} onClick={() => checkPerson(people, person)}>
-                <Card person={person} />
+                <Card person={person}  />
               </li>
             ))}
           </ul>
