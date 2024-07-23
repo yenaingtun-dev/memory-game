@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Header from "./Header";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const Cards = () => {
   const [point, setPoint] = useState(0);
@@ -27,9 +31,9 @@ const Cards = () => {
       .then((data) => {
         const slicedData = data.slice(0, 20);
         setPeople(slicedData);
-        const highestScoreLocal = localStorage.getItem('Highest Score');
+        const highestScoreLocal = localStorage.getItem("Highest Score");
         if (highestScoreLocal) {
-          setHighestScore(highestScoreLocal)
+          setHighestScore(highestScoreLocal);
         }
         setLoading(false);
       })
@@ -46,18 +50,32 @@ const Cards = () => {
       // setIsFlipped(true);
       person.clicked = true;
       setPoint((prevPoint) => prevPoint + 1);
-      setPeople(prevData => shuffleArray([...prevData]));
+      setPeople((prevData) => shuffleArray([...prevData]));
     } else {
       people.map((person) => {
         person.clicked = false;
       });
       if (point > highestScore) {
         setHighestScore(point);
-        localStorage.setItem('Highest Score', point);
+        localStorage.setItem("Highest Score", point);
       }
-      alert("restart");
+      if (point == 20) {
+        MySwal.fire({
+          title: "You Have Completed!",
+          text: `Your Score ${point}, Highest Score ${highestScore}`,
+          icon: "success", // 'warning', 'error', 'info', 'question'
+          confirmButtonText: "Restart",
+        });
+      } else {
+        MySwal.fire({
+          title: "You Have Clicked twice!",
+          text: `Your Score ${point}, Highest Score ${highestScore}`,
+          icon: "error", // 'warning', 'error', 'info', 'question'
+          confirmButtonText: "Restart",
+        });
+      }
       setPoint(0);
-      setPeople(prevData => shuffleArray([...prevData]));
+      setPeople((prevData) => shuffleArray([...prevData]));
     }
   };
 
@@ -71,7 +89,7 @@ const Cards = () => {
           <ul className="grid lg:gap-4 grid-cols-1 lg:grid-cols-4">
             {people.map((person) => (
               <li key={person.id} onClick={() => checkPerson(people, person)}>
-                <Card person={person}  />
+                <Card person={person} />
               </li>
             ))}
           </ul>
