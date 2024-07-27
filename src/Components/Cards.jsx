@@ -20,34 +20,52 @@ const Cards = () => {
       .map(({ value }) => value);
   };
 
-  useEffect(() => {
-    fetch("https://hp-api.onrender.com/api/characters")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        const slicedData = data.slice(0, 20);
-        setPeople(slicedData);
-        const highestScoreLocal = localStorage.getItem("Highest Score");
-        if (highestScoreLocal) {
-          setHighestScore(highestScoreLocal);
-        }
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
-
+  const [condition, setCondition] = useState(true);
+  const [fetchCount, setfetchCount] = useState(4);
   const [people, setPeople] = useState([]);
+
+
+
+  useEffect(() => {
+    fetchItems(fetchCount);
+  }, []);
+  const [checkToFetch, setCheckToFetch] = useState([])
+
+  const fetchItems = (count) => {
+    fetch("https://hp-api.onrender.com/api/characters")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const slicedData = data.slice(0, count);
+          setPeople(slicedData);
+          const highestScoreLocal = localStorage.getItem("Highest Score");
+          if (highestScoreLocal) {
+            setHighestScore(highestScoreLocal);
+          }
+          setLoading(false);
+        })
+        .catch((error) => {
+          setError(error);
+          setLoading(false);
+        })
+        .finally((people) => {
+          console.log(people);
+          // if (slicedData.filter(person => person.clicked) ? 'true' : 'false') {
+          //   console.log('herer');
+          // }
+        })
+
+        setCondition(false);
+  };
+
+  // const checkToFetch = people.filter(person => person.clicked).length == people.length ? 'true' : 'false';
 
   const checkPerson = (people, person) => {
     if (person.clicked !== true) {
-      // setIsFlipped(true);
       person.clicked = true;
       setPoint((prevPoint) => prevPoint + 1);
       setPeople((prevData) => shuffleArray([...prevData]));
@@ -59,13 +77,14 @@ const Cards = () => {
         setHighestScore(point);
         localStorage.setItem("Highest Score", point);
       }
-      if (point == 20) {
-        MySwal.fire({
-          title: "You Have Completed!",
-          text: `Your Score ${point}, Highest Score ${highestScore}`,
-          icon: "success", // 'warning', 'error', 'info', 'question'
-          confirmButtonText: "Restart",
-        });
+      if (point == fetchCount) {
+        // setCondition(true);
+        // MySwal.fire({
+        //   title: "You Have Completed!",
+        //   text: `Your Score ${point}, Highest Score ${highestScore}`,
+        //   icon: "success", // 'warning', 'error', 'info', 'question'
+        //   confirmButtonText: "Restart",
+        // });
       } else {
         MySwal.fire({
           title: "You Have Clicked twice!",
@@ -78,6 +97,14 @@ const Cards = () => {
       setPeople((prevData) => shuffleArray([...prevData]));
     }
   };
+
+  // useEffect(() => {
+  //     if (checkToFetch) {
+  //       const newFetchCount = fetchCount + 4;
+  //       setfetchCount(newFetchCount);
+  //       fetchItems(newFetchCount);
+  // }
+  // }, [checkPerson]);
 
   if (loading) return <p>Loading...</p>;
 
