@@ -11,7 +11,6 @@ const Cards = () => {
   const [highestScore, setHighestScore] = useState(0);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  // const [isFlipped, setIsFlipped] = useState(false);
 
   const shuffleArray = (array) => {
     return array
@@ -20,7 +19,6 @@ const Cards = () => {
       .map(({ value }) => value);
   };
 
-  const [condition, setCondition] = useState(true);
   const [fetchCount, setfetchCount] = useState(20);
   const [people, setPeople] = useState([]);
 
@@ -29,7 +27,7 @@ const Cards = () => {
   useEffect(() => {
     fetchItems(fetchCount);
   }, []);
-  const [checkToFetch, setCheckToFetch] = useState([])
+  // const [checkToFetch, setCheckToFetch] = useState([])
 
   const fetchItems = (count) => {
     fetch("https://hp-api.onrender.com/api/characters")
@@ -54,20 +52,8 @@ const Cards = () => {
         })
         .finally((people) => {
           console.log(people);
-          // if (checkToFetch) {
-          //   const newFetchCount = fetchCount + 4;
-          //   setfetchCount(newFetchCount);
-          //   fetchItems(newFetchCount);
-          // }
-          // if (slicedData.filter(person => person.clicked) ? 'true' : 'false') {
-          //   console.log('herer');
-          // }
         })
-
-        setCondition(false);
   };
-
-  // const checkToFetch = people.filter(person => person.clicked).length == people.length ? 'true' : 'false';
 
   const checkPerson = (people, person) => {
     if (person.clicked !== true) {
@@ -83,13 +69,12 @@ const Cards = () => {
         localStorage.setItem("Highest Score", point);
       }
       if (point == fetchCount) {
-        // setCondition(true);
-        // MySwal.fire({
-        //   title: "You Have Completed!",
-        //   text: `Your Score ${point}, Highest Score ${highestScore}`,
-        //   icon: "success", // 'warning', 'error', 'info', 'question'
-        //   confirmButtonText: "Restart",
-        // });
+        MySwal.fire({
+          title: "You Have Completed!",
+          text: `Your Score ${point}, Highest Score ${highestScore}`,
+          icon: "success", // 'warning', 'error', 'info', 'question'
+          confirmButtonText: "Restart",
+        });
       } else {
         MySwal.fire({
           title: "You Have Clicked twice!",
