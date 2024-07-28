@@ -21,7 +21,7 @@ const Cards = () => {
   };
 
   const [condition, setCondition] = useState(true);
-  const [fetchCount, setfetchCount] = useState(4);
+  const [fetchCount, setfetchCount] = useState(20);
   const [people, setPeople] = useState([]);
 
 
@@ -54,6 +54,11 @@ const Cards = () => {
         })
         .finally((people) => {
           console.log(people);
+          // if (checkToFetch) {
+          //   const newFetchCount = fetchCount + 4;
+          //   setfetchCount(newFetchCount);
+          //   fetchItems(newFetchCount);
+          // }
           // if (slicedData.filter(person => person.clicked) ? 'true' : 'false') {
           //   console.log('herer');
           // }
